@@ -1,0 +1,21 @@
+[{
+        "id": "gsky-reload-config",
+        "execute-command": "./scripts/gsky_reload_config.sh",
+        "response-message": "Executing Reload Script",
+        "http-methods": [
+            "POST"
+        ]
+    },
+    {
+        "id": "gsky-ingest-data",
+        "execute-command": "./scripts/gsky_ingest_data.sh",
+        "response-message": "Executing Ingest Script",
+        "http-methods": [
+            "POST"
+        ],
+        "pass-arguments-to-command": [{
+            "source": "payload",
+            "name": "crawl_dir"
+        }]
+    }
+]

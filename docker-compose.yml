@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  gsky_server:
+    image: eahazardswatch.icpac.net/gsky:dev
+    container_name: gsky_server
+    command: /bin/sh -c "/gsky_entry_point.sh"
+    volumes:
+      - ./data:/gdata
+      - ./gsky/config.json:/gsky/etc/config.json
+      - gsky_mas_db:/pg_data
+    ports:
+      - 8080:8080
+      - 8888:8888
+  gsky_manager_db:
+    image: postgres:12
+    container_name: gsky_manager_db
+    volumes:
+      - gsky_db_data:/var/lib/postgresql/data/
+    environment: 
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+    ports:
+      - 5432
+  gsky_manager:
+    image: eahazardswatch.icpac.net/gsky-manager:dev
+    container_name: gsky_manager
+    command: gunicorn gskymanager.wsgi:application --workers=5 --threads=2 --bind 0.0.0.0:8000
+    volumes:
+      - ./data:/gdata
+      - ./gsky/config.json:/gsky/config.json
+      - gsky_mg_static:/home/app/web/static
+      - gsky_mg_media:/home/app/web/media
+      - ./fixtures:/fixtures
+    environment: 
+      - DATABASE_URL=postgres://${DB_USER}:${DB_PASS}@gsky_manager_db:5432/${DB_NAME}
+      - HOST_DATA_ROOT_PATH=/gdata
+      - CONTAINER_DATA_ROOT_PATH=/gdata
+      - GSKY_CONFIG_FILE=/gsky/config.json
+      - GSKY_OWS_HOST_NAME=127.0.0.1:8080
+      - GSKY_MAS_ADDRESS=127.0.0.1:8888
+      - GSKY_WORKER_NODES=127.0.0.1:6000,
+    ports:
+      - 8000:8000
+
+volumes:
+  gsky_db_data:
+  gsky_mg_static:
+  gsky_mg_media:
+  gsky_mas_db:
