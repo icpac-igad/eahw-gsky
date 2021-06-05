@@ -4,7 +4,7 @@ services:
   gsky_server:
     image: eahazardswatch.icpac.net/gsky:dev
     container_name: gsky_server
-    command: /bin/sh -c "/gsky_entry_point.sh"
+    command: /bin/sh -c "/gsky_entrypoint.sh"
     volumes:
       - ./data:/gdata
       - ./gsky/config.json:/gsky/etc/config.json
