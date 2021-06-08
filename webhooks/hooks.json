@@ -13,9 +13,16 @@
         "http-methods": [
             "POST"
         ],
-        "pass-arguments-to-command": [{
-            "source": "payload",
-            "name": "crawl_dir"
-        }]
+        "incoming-payload-content-type": "application/json",
+        "trigger-rule": {
+            "match": {
+                "type": "payload-hmac-sha256",
+                "secret": "",
+                "parameter": {
+                    "source": "header",
+                    "name": "X-Gsky-Signature"
+                }
+            }
+        }
     }
 ]
