@@ -40,9 +40,9 @@ services:
       - HOST_DATA_ROOT_PATH=/gdata
       - CONTAINER_DATA_ROOT_PATH=/gdata
       - GSKY_CONFIG_FILE=/gsky/config.json
-      - GSKY_OWS_HOST_NAME=127.0.0.1:8080
-      - GSKY_MAS_ADDRESS=127.0.0.1:8888
-      - GSKY_WORKER_NODES=127.0.0.1:6000,
+      - GSKY_OWS_HOST_NAME=gsky_server:${OWS_PORT}
+      - GSKY_MAS_ADDRESS=gsky_server:${MAS_PORT}
+      - GSKY_WORKER_NODES=gsky_server:6000
     ports:
       - ${MANAGER_PORT}:8000
 

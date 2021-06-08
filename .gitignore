@@ -1,5 +1,5 @@
 .env
 
-/gsky
+/gsky/config.json
 /fixtures
 /data
