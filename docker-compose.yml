@@ -6,8 +6,8 @@ services:
     container_name: gsky_server
     command: /bin/sh -c "/gsky_entrypoint.sh"
     volumes:
-      - ./data:/gdata
-      - ./gsky/config.json:/gsky/etc/config.json
+      - ${HOST_DATA_ROOT_PATH}:/gdata
+      - ${GSKY_CONFIG_FILE}:/gsky/etc/config.json
       - gsky_mas_db:/pg_data
       - ./gsky/templates/WMS_GetCapabilities.tpl:/gsky/share/gsky/templates/WMS_GetCapabilities.tpl
     ports:
@@ -29,17 +29,17 @@ services:
     container_name: gsky_manager
     command: gunicorn gskymanager.wsgi:application --workers=5 --threads=2 --bind 0.0.0.0:8000
     volumes:
-      - ./data:/gdata
-      - ./gsky/config.json:/gsky/config.json
+      - ${HOST_DATA_ROOT_PATH}:/gdata
+      - ${GSKY_CONFIG_FILE}:/gsky/config.json
       - gsky_mg_static:/home/app/web/static
       - gsky_mg_media:/home/app/web/media
-      - ./fixtures:/fixtures
+      - ${FIXTURES_VOLUME}:/fixtures
       - ${DATA_SOURCE_VOLUME}:/data_source
     environment: 
       - DATABASE_URL=postgres://${DB_USER}:${DB_PASS}@gsky_manager_db:5432/${DB_NAME}
-      - HOST_DATA_ROOT_PATH=/gdata
+      - HOST_DATA_ROOT_PATH=${HOST_DATA_ROOT_PATH}
       - CONTAINER_DATA_ROOT_PATH=/gdata
-      - GSKY_CONFIG_FILE=/gsky/config.json
+      - GSKY_CONFIG_FILE=${GSKY_CONFIG_FILE}
       - GSKY_OWS_HOST_NAME=gsky_server:${OWS_PORT}
       - GSKY_MAS_ADDRESS=gsky_server:${MAS_PORT}
       - GSKY_WORKER_NODES=gsky_server:6000
