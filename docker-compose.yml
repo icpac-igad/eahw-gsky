@@ -5,12 +5,11 @@ services:
     image: eahazardswatch.icpac.net/gsky:${GSKY_SERVER_TAG}
     container_name: gsky_server
     restart: ${RESTART_POLICY}
-    command: /bin/sh -c "/gsky_entrypoint.sh"
+    command: sh /gsky_entrypoint.sh && sh/ingest.sh
     volumes:
       - ${HOST_DATA_ROOT_PATH}:/gdata
       - ${GSKY_CONFIG_FILE}:/gsky/etc/config.json
       - ${GSKY_INGEST_SCRIPT}:/ingest.sh
-      - gsky_mas_db:/pg_data
       - ./gsky/templates/WMS_GetCapabilities.tpl:/gsky/share/gsky/templates/WMS_GetCapabilities.tpl
     ports:
       - ${OWS_PORT}:8080
@@ -41,6 +40,9 @@ services:
       - ${FIXTURES_VOLUME}:/fixtures
       - ${DATA_SOURCE_VOLUME}:/data_source
     environment: 
+      - DEBUG=${DEBUG}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - SECRET_KEY=${SECRET_KEY}
       - DATABASE_URL=postgres://${DB_USER}:${DB_PASS}@gsky_manager_db:5432/${DB_NAME}
       - HOST_DATA_ROOT_PATH=/gdata
       - CONTAINER_DATA_ROOT_PATH=/gdata
