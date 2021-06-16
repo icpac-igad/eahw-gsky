@@ -12,6 +12,9 @@ services:
       - ${GSKY_INGEST_SCRIPT}:/ingest.sh
       - ./gsky/templates/WMS_GetCapabilities.tpl:/gsky/share/gsky/templates/WMS_GetCapabilities.tpl
       - ${GSKY_WPS_TEMPLATES_VOLUME}:/templates/WPS
+    environment: 
+      - WEBHOOK_SECRET=${WEBHOOK_SECRET}
+      - WEBHOOK_ENABLED=true
     ports:
       - ${OWS_PORT}:8080
       - ${MAS_PORT}:8888
@@ -55,7 +58,7 @@ services:
       - GSKY_INGEST_SCRIPT=/scripts/ingest.sh
       - GSKY_WPS_TEMPLATES_HOST_PATH=/gsky/templates/WPS
       - GSKY_WPS_TEMPLATES_CONTAINER_PATH=/templates/WPS
-      - GSKY_INGEST_WEBHOOK_URL=${GSKY_INGEST_WEBHOOK_URL}
+      - GSKY_WEBHOOK_URL=http://gsky_server:9000/hooks
       - WEBHOOK_SECRET=${WEBHOOK_SECRET}
     ports:
       - ${MANAGER_PORT}:8000
