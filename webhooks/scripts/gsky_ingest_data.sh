@@ -1,5 +1,5 @@
 #!/bin/bash
 
-docker exec gsky_server /ingest.sh
+docker-compose exec gsky_server /ingest.sh
 
 exit 0
