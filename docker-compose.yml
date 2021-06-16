@@ -11,6 +11,7 @@ services:
       - ${GSKY_CONFIG_FILE}:/gsky/etc/config.json
       - ${GSKY_INGEST_SCRIPT}:/ingest.sh
       - ./gsky/templates/WMS_GetCapabilities.tpl:/gsky/share/gsky/templates/WMS_GetCapabilities.tpl
+      - ${GSKY_WPS_TEMPLATES_VOLUME}:/templates/WPS
     ports:
       - ${OWS_PORT}:8080
       - ${MAS_PORT}:8888
@@ -34,7 +35,8 @@ services:
     volumes:
       - ${HOST_DATA_ROOT_PATH}:/gdata
       - ${GSKY_INGEST_SCRIPT}:/scripts/ingest.sh
-      - ${GSKY_CONFIG_FILE}:/gsky/config.json:z
+      - ${GSKY_CONFIG_FILE}:/gsky/config.json
+      - ${GSKY_WPS_TEMPLATES_VOLUME}:/gsky/templates/WPS
       - gsky_mg_static:/home/app/web/static
       - gsky_mg_media:/home/app/web/media
       - ${FIXTURES_VOLUME}:/fixtures
@@ -51,6 +53,8 @@ services:
       - GSKY_MAS_ADDRESS=gsky_server:8888
       - GSKY_WORKER_NODES=gsky_server:6000
       - GSKY_INGEST_SCRIPT=/scripts/ingest.sh
+      - GSKY_WPS_TEMPLATES_HOST_PATH=/gsky/templates/WPS
+      - GSKY_WPS_TEMPLATES_CONTAINER_PATH=/templates/WPS
       - GSKY_INGEST_WEBHOOK_URL=${GSKY_INGEST_WEBHOOK_URL}
       - WEBHOOK_SECRET=${WEBHOOK_SECRET}
     ports:
@@ -60,4 +64,3 @@ volumes:
   gsky_db_data:
   gsky_mg_static:
   gsky_mg_media:
-  gsky_mas_db:
