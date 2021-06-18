@@ -62,7 +62,14 @@ services:
       - WEBHOOK_SECRET=${WEBHOOK_SECRET}
     ports:
       - ${MANAGER_PORT}:8000
-
+  gsky_node:
+    image: eahazardswatch.icpac.net/gsky-node:${GSKY_NODE_TAG}
+    container_name: gsky_node
+    restart: ${RESTART_POLICY}
+    environment: 
+      - GSKY_OWS_URL=http://gsky_server:8080/ows
+    ports:
+      - ${NODE_API_PORT}:3000
 volumes:
   gsky_db_data:
   gsky_mg_static:
