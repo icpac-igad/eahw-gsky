@@ -46,6 +46,7 @@ services:
       - ${DATA_SOURCE_VOLUME}:/data_source
     environment: 
       - DEBUG=${DEBUG}
+      - FORCE_SCRIPT_NAME=${FORCE_SCRIPT_NAME}
       - ALLOWED_HOSTS=${ALLOWED_HOSTS}
       - SECRET_KEY=${SECRET_KEY}
       - DATABASE_URL=postgres://${DB_USER}:${DB_PASS}@gsky_manager_db:5432/${DB_NAME}
