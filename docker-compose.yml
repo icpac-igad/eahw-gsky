@@ -16,8 +16,8 @@ services:
       - WEBHOOK_SECRET=${WEBHOOK_SECRET}
       - WEBHOOK_ENABLED=true
     ports:
-      - ${OWS_PORT}:8080
-      - ${MAS_PORT}:8888
+      - 8080
+      - 8888
   gsky_manager_db:
     image: postgres:12
     container_name: gsky_manager_db
@@ -61,7 +61,7 @@ services:
       - GSKY_WEBHOOK_URL=http://gsky_server:9000/hooks
       - WEBHOOK_SECRET=${WEBHOOK_SECRET}
     ports:
-      - ${MANAGER_PORT}:8000
+      - 8000
   gsky_node:
     image: eahazardswatch.icpac.net/gsky-node:${GSKY_NODE_TAG}
     container_name: gsky_node
@@ -69,7 +69,18 @@ services:
     environment: 
       - GSKY_OWS_URL=http://gsky_server:8080/ows
     ports:
-      - ${NODE_API_PORT}:3000
+      - 3000
+  gsky_nginx:
+    image: nginx:1.18.0-alpine
+    restart: ${RESTART_POLICY}
+    container_name: gsky_nginx
+    volumes: 
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - gsky_mg_static:/gsky/static
+      - gsky_mg_media:/gsky/media
+    ports:
+      - ${GSKY_NGINX_PORT}:80
+
 volumes:
   gsky_db_data:
   gsky_mg_static:
