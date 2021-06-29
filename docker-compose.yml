@@ -69,6 +69,7 @@ services:
     restart: ${RESTART_POLICY}
     environment: 
       - GSKY_OWS_URL=http://gsky_server:8080/ows
+      - GSKY_MAS_URL=http://gsky_server:8888
     ports:
       - 3000
   gsky_nginx:
