@@ -8,7 +8,7 @@
 			<Keyword>WMS</Keyword>
 			<Keyword>GSKY</Keyword>
 		</KeywordList>
-		<OnlineResource xlink:type="simple" xlink:href="{{ .ServiceConfig.OWSProtocol }}://{{ .ServiceConfig.OWSHostname }}/ows/{{ .ServiceConfig.NameSpace }}" />
+		<OnlineResource xlink:type="simple" xlink:href="{{ .ServiceConfig.OWSProtocol }}://{{ .ServiceConfig.OWSHostname }}/ows" />
 		<ContactInformation>
 		    <ContactPersonPrimary>
 		        <ContactOrganization>IGAD Climate Prediction and Applications Center - ICPAC</ContactOrganization>
@@ -34,7 +34,7 @@
 				<DCPType>
 				  <HTTP>
 				    <Get>
-				      <OnlineResource xlink:type="simple" xlink:href="{{ .ServiceConfig.OWSProtocol }}://{{ .ServiceConfig.OWSHostname }}/ows/{{ .ServiceConfig.NameSpace }}?SERVICE=WMS&amp;"/>
+				      <OnlineResource xlink:type="simple" xlink:href="{{ .ServiceConfig.OWSProtocol }}://{{ .ServiceConfig.OWSHostname }}/ows?SERVICE=WMS&amp;"/>
 				    </Get>
 				  </HTTP>
 				</DCPType>
@@ -44,7 +44,7 @@
 				<DCPType>
 				  <HTTP>
 				    <Get>
-				      <OnlineResource xlink:type="simple" xlink:href="{{ .ServiceConfig.OWSProtocol }}://{{ .ServiceConfig.OWSHostname }}/ows/{{ .ServiceConfig.NameSpace }}?SERVICE=WMS&amp;"/>
+				      <OnlineResource xlink:type="simple" xlink:href="{{ .ServiceConfig.OWSProtocol }}://{{ .ServiceConfig.OWSHostname }}/ows?SERVICE=WMS&amp;"/>
 				    </Get>
 				  </HTTP>
 				</DCPType>
@@ -54,7 +54,7 @@
 				<DCPType>
 				  <HTTP>
 				    <Get>
-				      <OnlineResource xlink:type="simple" xlink:href="{{ .ServiceConfig.OWSProtocol }}://{{ .ServiceConfig.OWSHostname }}/ows/{{ .ServiceConfig.NameSpace }}?SERVICE=WMS&amp;"/>
+				      <OnlineResource xlink:type="simple" xlink:href="{{ .ServiceConfig.OWSProtocol }}://{{ .ServiceConfig.OWSHostname }}/ows?SERVICE=WMS&amp;"/>
 				    </Get>
 				  </HTTP>
 				</DCPType>
@@ -128,7 +128,7 @@
 						{{if .LegendPath }}
 						<LegendURL width="{{ .LegendWidth }}" height="{{ .LegendHeight }}">
 							<Format>image/png</Format>
-							<OnlineResource xlink:type="simple" xlink:href="{{ $layer.OWSProtocol }}://{{ $layer.OWSHostname }}/ows/{{ .NameSpace }}?service=WMS&amp;request=GetLegendGraphic&amp;version=1.3.0&amp;layers={{ $layer.Name }}&amp;styles={{ .Name }}"/>
+							<OnlineResource xlink:type="simple" xlink:href="{{ $layer.OWSProtocol }}://{{ $layer.OWSHostname }}/ows?service=WMS&amp;request=GetLegendGraphic&amp;version=1.3.0&amp;layers={{ $layer.Name }}&amp;styles={{ .Name }}"/>
 						</LegendURL>
 						{{end}}
 					</Style>

@@ -53,7 +53,7 @@ services:
       - HOST_DATA_ROOT_PATH=/gdata
       - CONTAINER_DATA_ROOT_PATH=/gdata
       - GSKY_CONFIG_FILE=/gsky/config.json
-      - GSKY_OWS_HOST_NAME=gsky_server:8080
+      - GSKY_OWS_HOST_NAME=${GSKY_OWS_HOST_NAME}
       - GSKY_MAS_ADDRESS=gsky_server:8888
       - GSKY_WORKER_NODES=gsky_server:6000
       - GSKY_INGEST_SCRIPT=/scripts/ingest.sh
