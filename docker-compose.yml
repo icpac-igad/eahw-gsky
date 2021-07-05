@@ -11,6 +11,7 @@ services:
       - ${GSKY_CONFIG_FILE}:/gsky/etc/config.json
       - ${GSKY_INGEST_SCRIPT}:/ingest.sh
       - ./gsky/templates/WMS_GetCapabilities.tpl:/gsky/share/gsky/templates/WMS_GetCapabilities.tpl
+      - ./gsky/templates/WCS_GetCapabilities.tpl:/gsky/share/gsky/templates/WCS_GetCapabilities.tpl
       - ${GSKY_WPS_TEMPLATES_VOLUME}:/templates/WPS
     environment: 
       - WEBHOOK_SECRET=${WEBHOOK_SECRET}
@@ -54,6 +55,7 @@ services:
       - CONTAINER_DATA_ROOT_PATH=/gdata
       - GSKY_CONFIG_FILE=/gsky/config.json
       - GSKY_OWS_HOST_NAME=${GSKY_OWS_HOST_NAME}
+      - GSKY_OWS_PROTOCOL=${GSKY_OWS_PROTOCOL}
       - GSKY_MAS_ADDRESS=gsky_server:8888
       - GSKY_WORKER_NODES=gsky_server:6000
       - GSKY_INGEST_SCRIPT=/scripts/ingest.sh
