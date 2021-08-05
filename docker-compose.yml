@@ -63,6 +63,8 @@ services:
       - GSKY_WPS_TEMPLATES_CONTAINER_PATH=/templates/WPS
       - GSKY_WEBHOOK_URL=http://gsky_server:9000/hooks
       - WEBHOOK_SECRET=${WEBHOOK_SECRET}
+      - ADS_KEY=${ADS_KEY}
+      - OWS_BASE_URL=${OWS_BASE_URL}
     ports:
       - 8000
   gsky_node:
