@@ -25,7 +25,7 @@
 					<ows:Voice>020 3514426</ows:Voice>
 				</ows:Phone>
 				<ows:Address>
-					<ows:DeliveryPoint>IGAD Climate Prediction & Applications Centre (ICPAC) </ows:DeliveryPoint>
+					<ows:DeliveryPoint>IGAD Climate Prediction and Applications Centre (ICPAC) </ows:DeliveryPoint>
 					<ows:City>Nairobi</ows:City>
 					<ows:AdministrativeArea>Nairobi</ows:AdministrativeArea>
 					<ows:PostalCode>10304-00100</ows:PostalCode>
