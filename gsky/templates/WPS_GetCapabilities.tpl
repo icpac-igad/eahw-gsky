@@ -2,7 +2,7 @@
 <wps:Capabilities xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:wps="http://www.opengis.net/wps/1.0.0" xml:lang="en-US" service="WPS" updateSequence="1" version="1.0.0">
 	<ows:ServiceIdentification>
 		<ows:Title>ICPAC WPS</ows:Title>
-		<ows:Abstract>This service uses GSKY - A Scalable, Distributed Geospatial Data Service. </ows:Abstract>
+		<ows:Abstract>This service uses GSKY - A Scalable, Distributed Geospatial Data Service.</ows:Abstract>
 		<ows:Keywords>
 			<ows:Keyword>WPS</ows:Keyword>
 			<ows:Keyword>GIS</ows:Keyword>
@@ -16,7 +16,7 @@
 	</ows:ServiceIdentification>
 	<ows:ServiceProvider>
 		<ows:ProviderName>ICPAC</ows:ProviderName>
-		<ows:ProviderSite xlink:href="https://icpac.net/>
+		<ows:ProviderSite xlink:href="https://icpac.net"/>
 		<ows:ServiceContact>
 			<ows:IndividualName>ICPAC Developers</ows:IndividualName>
 			<ows:PositionName>East Africa Hazards Watch</ows:PositionName>
