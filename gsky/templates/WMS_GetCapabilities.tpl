@@ -2,7 +2,7 @@
 	<Service>
 		<Name>WMS</Name>
 		<Title>ICPAC Web Map Service</Title>
-		<Abstract>This service relies on GSKY - A Scalable, Distributed Geospatial Data Service.</Abstract>
+		<Abstract>This service uses GSKY - A Scalable, Distributed Geospatial Data Service.</Abstract>
 		<KeywordList>
 			<Keyword>WFS</Keyword>
 			<Keyword>WMS</Keyword>
@@ -79,7 +79,7 @@
 		</dea:SupportedExtension>
 		{{ end }}
 		<Layer>
-			<Title>GSKY Web Map Service</Title>
+			<Title>ICPAC Web Map Service</Title>
 			<Abstract>A compliant implementation of WMS</Abstract>
 			<!--All supported EPSG projections:-->
 			<CRS>EPSG:3857</CRS>

@@ -11,6 +11,7 @@ services:
       - ${GSKY_CONFIG_FILE}:/gsky/etc/config.json
       - ${GSKY_INGEST_SCRIPT}:/ingest.sh
       - ./gsky/templates/WMS_GetCapabilities.tpl:/gsky/share/gsky/templates/WMS_GetCapabilities.tpl
+      - ./gsky/templates/WPS_GetCapabilities.tpl:/gsky/share/gsky/templates/WPS_GetCapabilities.tpl
       - ./gsky/templates/WCS_GetCapabilities.tpl:/gsky/share/gsky/templates/WCS_GetCapabilities.tpl
       - ${GSKY_WPS_TEMPLATES_VOLUME}:/templates/WPS
     environment: 

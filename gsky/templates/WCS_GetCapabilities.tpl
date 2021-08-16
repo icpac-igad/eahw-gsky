@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><WCS_Capabilities xmlns="http://www.opengis.net/wcs" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wcs http://schemas.opengis.net/wcs/1.0.0/wcsCapabilities.xsd" version="1.0.0">
   <Service>
-    <name>gsky</name>
+    <name>ICPAC WCS</name>
     <label>gsky</label>
     <fees>NONE</fees>
     <accessConstraints>NONE</accessConstraints>
