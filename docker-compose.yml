@@ -46,7 +46,8 @@ services:
       - gsky_mg_media:/home/app/web/media
       - ${FIXTURES_VOLUME}:/fixtures
       - ${DATA_SOURCE_VOLUME}:/data_source
-    environment: 
+    environment:
+      - CURRENT_UID=${CURRENT_UID} 
       - DEBUG=${DEBUG}
       - FORCE_SCRIPT_NAME=${FORCE_SCRIPT_NAME}
       - ALLOWED_HOSTS=${ALLOWED_HOSTS}
