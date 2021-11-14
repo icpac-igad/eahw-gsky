@@ -1,6 +1,11 @@
 version: "3.8"
 
 services:
+  gsky_memcached:
+    image: memcached:${MEMCACHED_TAG}
+    container_name: gsky_memcached
+    ports:
+     - 11211
   gsky_server:
     image: eahazardswatch.icpac.net/gsky:${GSKY_SERVER_TAG}
     container_name: gsky_server
@@ -10,7 +15,6 @@ services:
       - ${HOST_DATA_ROOT_PATH}:/gdata
       - ${GSKY_CONFIG_FILE}:/gsky/etc/config.json
       - ${GSKY_INGEST_SCRIPT}:/ingest.sh
-      - ./gsky/ingest_data.sh:/ingest_data.sh
       - ./gsky/templates/WMS_GetCapabilities.tpl:/gsky/share/gsky/templates/WMS_GetCapabilities.tpl
       - ./gsky/templates/WPS_GetCapabilities.tpl:/gsky/share/gsky/templates/WPS_GetCapabilities.tpl
       - ./gsky/templates/WCS_GetCapabilities.tpl:/gsky/share/gsky/templates/WCS_GetCapabilities.tpl
@@ -19,6 +23,9 @@ services:
     environment: 
       - WEBHOOK_SECRET=${WEBHOOK_SECRET}
       - WEBHOOK_ENABLED=true
+      - MEMCACHE_URI=gsky_memcached:11211
+      - MEMCACHE_DEV_TCP_FILE=gsky_memcached/11211
+      - MAS_DB_POOL_SIZE=8
     ports:
       - 8080
       - 8888
