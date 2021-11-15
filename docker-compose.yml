@@ -4,6 +4,7 @@ services:
   gsky_memcached:
     image: memcached:${MEMCACHED_TAG}
     container_name: gsky_memcached
+    restart: ${RESTART_POLICY}
     ports:
      - 11211
   gsky_server:
