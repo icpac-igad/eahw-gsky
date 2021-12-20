@@ -20,13 +20,18 @@ services:
       - ./gsky/templates/WPS_GetCapabilities.tpl:/gsky/share/gsky/templates/WPS_GetCapabilities.tpl
       - ./gsky/templates/WCS_GetCapabilities.tpl:/gsky/share/gsky/templates/WCS_GetCapabilities.tpl
       - ${GSKY_WPS_TEMPLATES_VOLUME}:/templates/WPS
+      - /Users/erickotenyo/Downloads/Data/ICPAC/MONITORING/Temperature/CLIM_TMAX:/gdata/CLIM_TMAX
+      - /Users/erickotenyo/Downloads/Data/ICPAC/MONITORING/Temperature/CLIM_TMEAN:/gdata/CLIM_TMEAN
+      - /Users/erickotenyo/Downloads/Data/ICPAC/MONITORING/Temperature/CLIM_TMIN:/gdata/CLIM_TMIN
       - ./gsky/rulesets:/rulesets
+      - ${GSKY_WMS_GEOM_FILE_VOL}:/gsky/geojson/gha.geojson
     environment: 
       - WEBHOOK_SECRET=${WEBHOOK_SECRET}
       - WEBHOOK_ENABLED=true
       - MEMCACHE_URI=gsky_memcached:11211
       - MEMCACHE_DEV_TCP_FILE=gsky_memcached/11211
       - MAS_DB_POOL_SIZE=8
+      - GSKY_WMS_GEOMS_FILE=/gsky/geojson/gha.geojson
     ports:
       - 8080
       - 8888
@@ -78,7 +83,6 @@ services:
       - GSKY_RULESETS_CONTAINER_PATH=/rulesets
       - GSKY_WEBHOOK_URL=http://gsky_server:9000/hooks
       - WEBHOOK_SECRET=${WEBHOOK_SECRET}
-      - ADS_KEY=${ADS_KEY}
       - OWS_BASE_URL=${OWS_BASE_URL}
     ports:
       - 8000
