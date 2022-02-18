@@ -14,7 +14,7 @@ services:
     command: /bin/bash /gsky/gsky_entrypoint.sh && sh /ingest.sh
     volumes:
       - ${HOST_DATA_ROOT_PATH}:/gdata
-      - ${GSKY_CONFIG_FOLDER}:/gsky/etc/gskyconfg
+      - ${GSKY_CONFIG_FOLDER}:/gsky/etc
       - ./gsky/gsky_entrypoint.sh:/gsky/gsky_entrypoint.sh
       - ${GSKY_INGEST_SCRIPT}:/ingest.sh
       - ./gsky/templates/WMS_GetCapabilities.tpl:/gsky/share/gsky/templates/WMS_GetCapabilities.tpl
