@@ -11,18 +11,16 @@ services:
     image: eahazardswatch.icpac.net/gsky:${GSKY_SERVER_TAG}
     container_name: gsky_server
     restart: ${RESTART_POLICY}
-    command: sh /gsky_entrypoint.sh && sh/ingest.sh
+    command: /bin/bash /gsky/gsky_entrypoint.sh && sh /ingest.sh
     volumes:
       - ${HOST_DATA_ROOT_PATH}:/gdata
-      - ${GSKY_CONFIG_FILE}:/gsky/etc/config.json
+      - ${GSKY_CONFIG_FOLDER}:/gsky/etc/gskyconfg
+      - ./gsky/gsky_entrypoint.sh:/gsky/gsky_entrypoint.sh
       - ${GSKY_INGEST_SCRIPT}:/ingest.sh
       - ./gsky/templates/WMS_GetCapabilities.tpl:/gsky/share/gsky/templates/WMS_GetCapabilities.tpl
       - ./gsky/templates/WPS_GetCapabilities.tpl:/gsky/share/gsky/templates/WPS_GetCapabilities.tpl
       - ./gsky/templates/WCS_GetCapabilities.tpl:/gsky/share/gsky/templates/WCS_GetCapabilities.tpl
       - ${GSKY_WPS_TEMPLATES_VOLUME}:/templates/WPS
-      - /Users/erickotenyo/Downloads/Data/ICPAC/MONITORING/Temperature/CLIM_TMAX:/gdata/CLIM_TMAX
-      - /Users/erickotenyo/Downloads/Data/ICPAC/MONITORING/Temperature/CLIM_TMEAN:/gdata/CLIM_TMEAN
-      - /Users/erickotenyo/Downloads/Data/ICPAC/MONITORING/Temperature/CLIM_TMIN:/gdata/CLIM_TMIN
       - ./gsky/rulesets:/rulesets
       - ${GSKY_WMS_GEOM_FILE_VOL}:/gsky/geojson/gha.geojson
     environment: 
@@ -51,7 +49,7 @@ services:
     image: eahazardswatch.icpac.net/gsky-manager:${GSKY_MANAGER_TAG}
     container_name: gsky_manager
     restart: ${RESTART_POLICY}
-    command: gunicorn gskymanager.wsgi:application --workers=5 --threads=2 --bind 0.0.0.0:8000
+    command: gunicorn gskymanager.wsgi:application --workers=3 --threads=3 --bind 0.0.0.0:8000
     volumes:
       - ${HOST_DATA_ROOT_PATH}:/gdata
       - ${GSKY_INGEST_SCRIPT}:/scripts/ingest.sh

@@ -1,0 +1,12 @@
+{
+    "service_config": {
+        "ows_hostname": "127.0.0.1:7300",
+        "ows_protocol": "http",
+        "mas_address": "gsky_server:8888",
+        "worker_nodes": [
+            "gsky_server:6000"
+        ]
+    },
+    "layers": [],
+    "processes": []
+}
