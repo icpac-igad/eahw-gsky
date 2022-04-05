@@ -64,9 +64,7 @@ services:
       - ${GSKY_WPS_TEMPLATES_VOLUME}:/gsky/templates/WPS
       - gsky_mg_static:/home/app/web/static
       - gsky_mg_media:/home/app/web/media
-      - ${FIXTURES_VOLUME}:/fixtures
-      - ${DATA_SOURCE_VOLUME}:/data_source
-      - ./gsky/rulesets:/gsky/rulesets
+      - ${GSKY_RULESETS_VOLUME}:/gsky/rulesets
     environment:
       - CURRENT_UID=${CURRENT_UID} 
       - DEBUG=${DEBUG}
