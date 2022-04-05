@@ -1,0 +1,8 @@
+{
+    "service_config": {
+        "ows_hostname": "127.0.0.1:8080",
+        "mas_address": "127.0.0.1:8888",
+        "worker_nodes": ["127.0.0.1:6000"]
+    },
+    "layers": []
+}
