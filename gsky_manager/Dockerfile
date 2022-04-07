@@ -27,7 +27,7 @@ RUN git clone https://github.com/icpac-igad/gsky-manager.git /usr/src/app
 WORKDIR /usr/src/app
 
 # Install the project requirements.
-RUN pip wheel --no-deps --wheel-dir /usr/src/webapp/wheels -r ./requirements.txt
+RUN pip wheel --no-deps --wheel-dir /usr/src/webapp/wheels -r /usr/src/app/requirements.txt
 
 # Install gunicorn
 RUN pip wheel --no-deps --wheel-dir /usr/src/webapp/wheels gunicorn
@@ -41,7 +41,7 @@ FROM python:3.8.1-slim-buster
 # install dependencies
 RUN apt-get update && apt-get install --yes --quiet --no-install-recommends libpq-dev
 COPY --from=builder /usr/src/webapp/wheels /wheels
-COPY --from=builder /usr/src/webapp/requirements.txt .
+COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --no-cache /wheels/*
 
 # Install gosu
