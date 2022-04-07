@@ -74,4 +74,4 @@ Execution requires:
 
 - WEBHOOK_SECRET=
 
-- CURRENT_UID=501
+- CURRENT_UID=<USER ID you want to run apps with>
