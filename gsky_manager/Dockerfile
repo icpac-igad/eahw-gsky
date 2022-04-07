@@ -29,6 +29,9 @@ RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-r
 # Install the project requirements.
 RUN pip wheel --no-deps --wheel-dir /usr/src/app/wheels -r ./requirements.txt
 
+# Install gunicorn
+RUN pip wheel --no-deps --wheel-dir /usr/src/app/wheels gunicorn
+
 #########
 # FINAL #
 #########
