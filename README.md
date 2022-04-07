@@ -58,7 +58,7 @@ Execution requires:
 - GSKY_OWS_HOST_NAME=gsky_server:8080
 - GSKY_OWS_PROTOCOL=http
 - OWS_BASE_URL=http://127.0.0.1/ows
- GSKY_WMS_GEOM_FILE_VOL=./gsky/gha.geojson
+- GSKY_WMS_GEOM_FILE_VOL=./gsky/gha.geojson
 
 - GSKY_REPO=https://github.com/icpac-igad/gsky
 - GSKY_BRANCH=
